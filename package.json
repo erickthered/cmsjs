@@ -1,0 +1,10 @@
+{
+	"name" : "CmsJS",
+	"version" : "0.0.0",
+	"author" : "Erick Rojas",
+	"dependencies" : {
+		"express" : "*",
+		"mongo" : "*",
+		"mongoose" : "*"
+	}
+}
