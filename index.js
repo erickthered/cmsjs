@@ -30,6 +30,7 @@ var insertVisitor = function(db, req) {
 
 var initExpressApp = function(db) {
 	app.enable('trust proxy');
+	app.use(express.static(__dirname + '/public'));
 	app.get('/article/:name', function(req, res) {
 		var article = require('./lib/article');
 		article.get(db, req.params.name, function(err, record) {
@@ -49,7 +50,7 @@ var initExpressApp = function(db) {
 			insertVisitor(db, req);
 		});
 	});
-	app.get('*', function(req, res) {
+	app.get('/', function(req, res) {
 		res.statusCode = 200;
 		res.setHeader('Content-type', 'text/html;charset=utf-8');
 		res.write('<h1>Welcome to CmsJS</h1>');

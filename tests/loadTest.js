@@ -1,4 +1,4 @@
-var totalRequests = 1000;
+var totalRequests = 10000;
 var startDate = new Date();
 var http = require('http');
 var parsedRequests = 0;
@@ -6,13 +6,13 @@ var successfulRequests = 0;
 
 var options = {
 	'host' : '192.168.0.20',
-	'port' : '7777',
-//	'port' : '80',
+//	'port' : '7777',
+	'port' : '80',
 	'method' : 'GET',
-	'path' : '/'// + Math.floor(Math.random() * 1000)
-//	'path' : 'phpinfo.php'
+//	'path' : '/article/seo'// + Math.floor(Math.random() * 1000)
+//	'path' : '/phpinfo.php'
+	'path' : '/zendycms/public/index.php'
 };
-
 
 var callback = function(res) {
 	res.on('end', function() {
