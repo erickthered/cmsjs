@@ -1,32 +1,16 @@
 var express = require('express');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
+// used for testing/development
 var mongoHost = 'localhost';
 var mongoPort = 27017;
 var mongoDbName = 'test';
-var mongoURI = process.env.MONGOLAB_URI;
-//"mongodb://" + mongoHost + ":" + mongoPort + "/" + mongoDbName;
+
 var mongoCollectionName = 'visitors';
+var mongoURI = process.env.MONGOLAB_URI || "mongodb://" + mongoHost + ":" + mongoPort + "/" + mongoDbName;
 var appPort = process.env.PORT || 7777;
 var writeLog = function(message) {
 	console.log(new Date() + ' - ' + message);
-}
-
-var insertVisitor = function(db, req) {
-	db.collection(mongoCollectionName, function(err, collection) {
-		if (!err) {
-			var record = {
-				'fecha' : new Date(),
-				'ip_address' : req.ip,
-				'path' : req.path
-			}
-			collection.insert(record, function(err, record) {
-				if (err) console.log(err);
-			});
-		} else {
-			console.log(err);
-		}
-	});
 }
 
 var initExpressApp = function(db) {
@@ -34,6 +18,7 @@ var initExpressApp = function(db) {
 	app.use(express.static(__dirname + '/public'));
 	app.get('/article/:name', function(req, res) {
 		var article = require('./lib/article');
+		var visitor = require('./lib/visitor');
 		article.get(db, req.params.name, function(err, record) {
 			if (record) {
 				res.statusCode = 200;
@@ -48,15 +33,32 @@ var initExpressApp = function(db) {
 				res.write('<p>Not found.</p>');
 			}
 			res.end();
-			insertVisitor(db, req);
 		});
+		visitor.save(db, req);
+	});
+	app.get('/save', function(req, res) {
+		var article = require('./lib/article');
+		var visitor = require('./lib/visitor');
+		article.save(db, req, function(err, record) {
+			res.statusCode = 200;
+			res.setHeader('Content-type', 'text/html;charset=utf-8');
+			if (record) {
+				res.write('<h1>Article has been Saved</h1>');
+			} else {
+				res.write('<h1>Error when saving Article</h1>');
+				res.write('<p>' + err + '</p>');
+			}
+			res.end();
+		});
+		visitor.save(db, req);
 	});
 	app.get('/', function(req, res) {
+		var visitor = require('./lib/visitor');
 		res.statusCode = 200;
 		res.setHeader('Content-type', 'text/html;charset=utf-8');
 		res.write('<h1>Welcome to CmsJS</h1>');
 		res.end();
-		insertVisitor(db, req);
+		visitor.save(db, req);
 	});
 	app.listen(appPort);
 	writeLog("CmsJS started!");
@@ -70,6 +72,4 @@ var mongoCallback = function(err, db) {
 	}
 }
 
-console.log("-- Process Environment --");
-console.log(process.env);
 MongoClient.connect(mongoURI, mongoCallback);
