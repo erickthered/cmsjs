@@ -69,4 +69,5 @@ var mongoCallback = function(err, db) {
 	}
 }
 
+console.log(process.env);
 MongoClient.connect(mongoURI, mongoCallback);
