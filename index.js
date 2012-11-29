@@ -6,7 +6,7 @@ var mongoPort = 27017;
 var mongoDbName = 'test';
 var mongoURI = "mongodb://" + mongoHost + ":" + mongoPort + "/" + mongoDbName;
 var mongoCollectionName = 'visitors';
-
+var appPort = process.env.PORT || 7777;
 var writeLog = function(message) {
 	console.log(new Date() + ' - ' + message);
 }
@@ -57,7 +57,7 @@ var initExpressApp = function(db) {
 		res.end();
 		insertVisitor(db, req);
 	});
-	app.listen(7777);
+	app.listen(appPort);
 	writeLog("CmsJS started!");
 }
 
@@ -69,5 +69,6 @@ var mongoCallback = function(err, db) {
 	}
 }
 
+console.log("-- Process Environment --");
 console.log(process.env);
 MongoClient.connect(mongoURI, mongoCallback);
