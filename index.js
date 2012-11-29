@@ -4,7 +4,8 @@ var MongoClient = require('mongodb').MongoClient;
 var mongoHost = 'localhost';
 var mongoPort = 27017;
 var mongoDbName = 'test';
-var mongoURI = "mongodb://" + mongoHost + ":" + mongoPort + "/" + mongoDbName;
+var mongoURI = process.env.MONGOLAB_URI;
+//"mongodb://" + mongoHost + ":" + mongoPort + "/" + mongoDbName;
 var mongoCollectionName = 'visitors';
 var appPort = process.env.PORT || 7777;
 var writeLog = function(message) {
