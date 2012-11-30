@@ -26,7 +26,7 @@ var initExpressApp = function(db) {
 			if (record) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
-				res.render('article/view', {article:record}, function(err, html) {
+				res.render('article/view', {article:record}, function (err, html) {
 					if (err) {
 						console.log(err);
 						res.end();
@@ -45,7 +45,27 @@ var initExpressApp = function(db) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/save', function(req, res) {
+	app.get('/edit', function(req, res) {
+		var article = require('./lib/article');
+		var visitor = require('./lib/visitor');
+		article.get(db, req.query['name'], function(err, record) {
+			if (!err) {
+				res.render('article/edit', {article:record}, function (err, html) {
+					if (err) {
+						console.log(err);
+						res.end();
+					} else {
+						res.send(html);
+						res.end();
+					}
+				});
+			} else {
+				console.log(err);
+			}
+		});		
+		visitor.save(db, req);
+	});	
+	app.post('/save', function(req, res) {
 		var article = require('./lib/article');
 		var visitor = require('./lib/visitor');
 		article.save(db, req, function(err, record) {

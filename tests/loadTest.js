@@ -6,12 +6,12 @@ var successfulRequests = 0;
 
 var options = {
 	'host' : '192.168.0.20',
-	'port' : '7777',
-//	'port' : '80',
+//	'port' : '7777',
+	'port' : '80',
 	'method' : 'GET',
-	'path' : '/article/seo'// + Math.floor(Math.random() * 1000)
+//	'path' : '/article/seo'// + Math.floor(Math.random() * 1000)
 //	'path' : '/phpinfo.php'
-//	'path' : '/zendycms/public/index.php'
+	'path' : '/zendycms/public/index.php'
 };
 
 var callback = function(res) {
