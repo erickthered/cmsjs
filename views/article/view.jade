@@ -1,0 +1,11 @@
+extends ../layout
+
+append block head
+	title= article.title
+
+block content
+	h1.article_title= article.title
+	- if(article.published)
+		div.article_author= article.published
+	div.article_author= article.author
+	div.article_content= article.content

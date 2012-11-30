@@ -15,7 +15,10 @@ var writeLog = function(message) {
 
 var initExpressApp = function(db) {
 	app.enable('trust proxy');
+//	app.use(express.compress());
+	app.use(express.bodyParser());
 	app.use(express.static(__dirname + '/public'));
+	app.set('view engine', 'jade');
 	app.get('/article/:name', function(req, res) {
 		var article = require('./lib/article');
 		var visitor = require('./lib/visitor');
@@ -23,16 +26,22 @@ var initExpressApp = function(db) {
 			if (record) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
-				res.write('<h1>' + record.title + '</h1>');
-				res.write('<div>' + record.author + '</div>');
-				res.write('<div>' + record.content + '</div>');
+				res.render('article/view', {article:record}, function(err, html) {
+					if (err) {
+						console.log(err);
+						res.end();
+					} else {
+						res.send(html);
+						res.end();
+					}
+				});
 			} else {
 				res.statusCode = 404;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
 				res.write('<h1>Error 404</h1>');
 				res.write('<p>Not found.</p>');
+				res.end();
 			}
-			res.end();
 		});
 		visitor.save(db, req);
 	});
