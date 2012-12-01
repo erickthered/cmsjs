@@ -1,37 +1,41 @@
-h2 Edit Article
-form(method='post', action='/save')
-	input(name='_method', value='PUT', type='hidden')
-	-if (article != null)
-		-if (article.id > 0)
-			input(name='article[id]', value=article.id, type='hidden')
-		div
-			label Author
+extends ../layout
+
+block content
+	h2 Edit Article
+	form(method='post', action='/save')
+		input(name='_method', value='PUT', type='hidden')
+		-if (article)
+			-if (article.id > 0)
+				input(name='article[id]', value=article.id, type='hidden')
+			div
+				label Author
 				input(name='article[author]', value=article.author, type='text', maxlength=200")
-		div
-			label Title
+			div
+				label Title
 				input(name='article[title]', value=article.title, type='text', maxlength=200)
-		div
-			label SEO Title
+			div
+				label SEO Title
 				input(name='article[seo_title]', value=article.seo_title, type='text', maxlength=50)
-		div
-			label Content
-				textarea(name='article[content]', value=article.content, cols=50, rows=5)
-		div
-			label
-				input(name='submit', value='Save', type='submit')
-	-else
-		div
-			label Author
-				input(name='article[author]', type='text', maxlength=200")
-		div
-			label Title
-				input(name='article[title]', type='text', maxlength=200)
-		div
-			label SEO Title
-				input(name='article[seo_title]', type='text', maxlength=50)
-		div
-			label Content
+			div
+				label Content
 				textarea(name='article[content]', cols=50, rows=5)
-		div
-			label
+					=article.content || ''
+			div
+				label
+				input(name='submit', value='Save', type='submit')
+		-else
+			div
+				label Author
+				input(name='article[author]', type='text', maxlength=200")
+			div
+				label Title
+				input(name='article[title]', type='text', maxlength=200)
+			div
+				label SEO Title
+				input(name='article[seo_title]', type='text', maxlength=50)
+			div
+				label Content
+				textarea(name='article[content]', cols=50, rows=5)
+			div
+				label
 				input(name='submit', value='Save', type='submit')

@@ -11,7 +11,7 @@ var mongoURI = process.env.MONGOLAB_URI || "mongodb://" + mongoHost + ":" + mong
 var appPort = process.env.PORT || 7777;
 var writeLog = function(message) {
 	console.log(new Date() + ' - ' + message);
-}
+};
 
 var initExpressApp = function(db) {
 	app.enable('trust proxy');
@@ -45,10 +45,10 @@ var initExpressApp = function(db) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/edit', function(req, res) {
+	app.get('/edit/:name?', function(req, res) {
 		var article = require('./lib/article');
 		var visitor = require('./lib/visitor');
-		article.get(db, req.query['name'], function(err, record) {
+		article.get(db, req.params.name, function(err, record) {
 			if (!err) {
 				res.render('article/edit', {article:record}, function (err, html) {
 					if (err) {
@@ -82,16 +82,30 @@ var initExpressApp = function(db) {
 		visitor.save(db, req);
 	});
 	app.get('/', function(req, res) {
+		var article = require('./lib/article');
 		var visitor = require('./lib/visitor');
-		res.statusCode = 200;
-		res.setHeader('Content-type', 'text/html;charset=utf-8');
-		res.write('<h1>Welcome to CmsJS</h1>');
-		res.end();
+		article.fetchRecent(db, 3, function(err, articles) {
+			if (!err) {
+				res.statusCode = 200;
+				res.setHeader('Content-type', 'text/html;charset=utf-8');
+				res.render('index/index', {articles: articles}, function(err, html) {
+					if (!err) {
+						res.send(html);
+					} else {
+						console.log("Error en get /" + err);
+					}			
+					res.end();
+				});
+			} else {
+				res.statusCode = 500;
+				res.end();
+			}
+		});
 		visitor.save(db, req);
 	});
 	app.listen(appPort);
 	writeLog("CmsJS started!");
-}
+};
 
 var mongoCallback = function(err, db) {
 	if (!err) {
@@ -99,6 +113,6 @@ var mongoCallback = function(err, db) {
 	} else {
 		console.log(err);
 	}
-}
+};
 
 MongoClient.connect(mongoURI, mongoCallback);

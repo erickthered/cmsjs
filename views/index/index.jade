@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	h1 Welcome to the index page of CmsJS
+	each item in articles
+		li
+			a(href='/article/'+item.seo_title, title=item.title)= item.title
+			&nbsp;
+			a(href='/edit/'+item.seo_title, title=item.title) Editar
+	div
+		p
+			a(href='/edit') New Article

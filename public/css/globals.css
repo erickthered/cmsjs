@@ -17,3 +17,11 @@ h1 {
 	font-style: italic;
 	font-size: 11px;
 }
+
+form label {
+	display: block;
+}
+
+div#footer {
+	margin-top: 20px;
+}
