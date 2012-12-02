@@ -1,0 +1,25 @@
+form(id='comment_form',action='/article/comment/save',method='post')
+	h3 Add a Comment
+	label Your Name (required)
+	input(name='comment[author]',id='comment_author')
+	label Your Email (required)
+	input(name='comment[email]',id='comment_email')
+	label Your Comment (required)
+	textarea(name='comment[content]',id='comment_content',rows='15',cols='50')
+	input(type='hidden',name='comment[article]',value=article._id)
+	label
+	input(type='button',value='Publish Comment',id='comment_submit')
+	script
+		$(document).ready(function() {
+			$('#comment_submit').click(function() {
+				var isValid = $('#comment_author').val() != '';
+				isValid = isValid && $('#comment_email').val() != '';
+				isValid = isValid && $('#comment_content').val() != '';
+
+				if (isValid) {
+					$('#comment_form').submit();
+				} else {
+					alert('All fields are required');
+				}
+			});
+		});

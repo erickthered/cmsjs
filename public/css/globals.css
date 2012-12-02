@@ -33,6 +33,7 @@ body {
 .comment {
 	border: 1px dotted #edd;
 	margin: 5px;
+	padding: 10px;
 }
 .comment_author {
 	font-weight: bold;

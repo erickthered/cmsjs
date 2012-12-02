@@ -22,7 +22,7 @@ var init = function(app) {
 			} else {
 				console.log("Error en fetchRecent " + err);
 				res.statusCode = 500;
-				res.write('error raro');
+				res.write('Error when retrieving recent articles');
 				res.end();
 			}
 		});

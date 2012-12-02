@@ -1,13 +1,14 @@
 {
 	"name" : "CmsJS",
-	"version" : "0.0.0",
+	"version" : "0.0.4",
 	"author" : "Erick Rojas",
 	"dependencies" : {
 		"express" : "*",
 		"mongodb" : "*",
 		"mongoose" : "*",
 		"jade" : "*",
-		"markdown": "*"
+		"markdown": "*",
+		"nodeunit": "*"
 	},
 	"engines": {
     	"node": "0.8.x",

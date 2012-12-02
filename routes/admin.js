@@ -1,4 +1,4 @@
-var  express = require('express');
+var express = require('express');
 var requiresAuth = express.basicAuth('admin', 'admin');
 
 function notImplemented(req, res) {
