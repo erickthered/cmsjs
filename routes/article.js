@@ -1,21 +1,22 @@
 var article = require('../lib/models/article');
 var visitor = require('../lib/models/visitor');
+var markdown = require('markdown');
 
 var init = function(app) {
-	console.log('Initializing Article routes...');
+	console.log('Initializing ARTICLE routes...');
 
 	var db = app.get('db');
-	app.get('/article/:name', function(req, res) {
+	app.get('/article/view/:name', function(req, res) {
 		article.get(db, req.params.name, function(err, record) {
 			if (record) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
-				res.render('article/view', {article:record}, function (err, html) {
+				res.render('article/view', {article:record, md:markdown.parse}, function (err, html) {
 					if (err) {
 						console.log(err);
 						res.end();
 					} else {
-						res.send(html);
+						res.write(html);
 						res.end();
 					}
 				});
@@ -29,7 +30,7 @@ var init = function(app) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/edit/:name?', function(req, res) {
+	app.get('/article/edit/:name?', function(req, res) {
 		article.get(db, req.params.name, function(err, record) {
 			if (!err) {
 				res.render('article/edit', {article:record}, function (err, html) {
@@ -37,7 +38,8 @@ var init = function(app) {
 						console.log(err);
 						res.end();
 					} else {
-						res.send(html);
+						res.setHeader('Content-type', 'text/html;charset=utf-8');
+						res.write(html);
 						res.end();
 					}
 				});
@@ -47,13 +49,13 @@ var init = function(app) {
 		});		
 		visitor.save(db, req);
 	});	
-	app.post('/save', function(req, res) {
+	app.post('/article/save', function(req, res) {
 		article.save(db, req, function(err, record) {
-			res.statusCode = 200;
-			res.setHeader('Content-type', 'text/html;charset=utf-8');
-			if (record) {
-				res.write('<h1>Article has been Saved</h1>');
+			if (!err) {
+				res.redirect('/article/view/' + req.body.article.seo_title);
 			} else {
+				res.statusCode = 200;
+				res.setHeader('Content-type', 'text/html;charset=utf-8');
 				res.write('<h1>Error when saving Article</h1>');
 				res.write('<p>' + err + '</p>');
 			}
@@ -61,7 +63,7 @@ var init = function(app) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/remove/:name', function(req, res) {
+	app.get('/article/remove/:name', function(req, res) {
 		article.remove(db, req.params.name, function(err, result) {
 			if (!err) {
 				res.write('<h1>Article Deleted</h1>');

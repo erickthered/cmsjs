@@ -3,6 +3,19 @@ body {
 	font-family: arial,helvetica,verdad;
 	font-size: 13px;
 }
+.clear{
+	clear: both;
+}
+
+#left {
+	width: 49%;
+	float: left;
+}
+#right {
+	width: 49%;
+	float: right;
+}
+
 .article_title {
 	font-weight: bold;
 	font-size: 18px;

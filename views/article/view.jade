@@ -8,4 +8,5 @@ block content
 	- if(article.published)
 		div.article_author= article.published
 	div.article_author= article.author
-	div.article_content= article.content
+	div.article_content
+		!= md(article.content)

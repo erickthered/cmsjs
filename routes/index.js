@@ -2,7 +2,7 @@ var article = require('../lib/models/article');
 var visitor = require('../lib/models/visitor');
 
 var init = function(app) {
-	console.log ("Initializing Index routes...");
+	console.log ("Initializing INDEX routes...");
 
 	var db = app.get('db');
 	app.get('/', function(req, res) {
@@ -12,54 +12,27 @@ var init = function(app) {
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
 				res.render('index/index', {articles: articles}, function(err, html) {
 					if (!err) {
-						res.send(html);
+						res.write(html);
+						res.end();
 					} else {
 						console.log("Error en get /" + err);
-					}			
-					res.end();
+						res.end();
+					}
 				});
-				res.end();
 			} else {
+				console.log("Error en fetchRecent " + err);
 				res.statusCode = 500;
+				res.write('error raro');
 				res.end();
 			}
 		});
 		visitor.save(db, req);
 	});
-	app.get('/test', function (req, res) {
-		var article = {
-			title : "Prueba",
-			seo_title : "prueba",
-			content : "Contenido de prueba",
-			publishedOn : new Date(),
-			author : "Erick Rojas : erojas@hotmail.com",
-			comments : [
-				{
-					author: 'Pepe Pegotero',
-					publishedOn : new Date(),
-					comment: 'JS rules!'
-				},
-				{
-					author: 'Pepetitle Pegotero 2',
-					publishedOn : new Date(),
-					comment: 'Mongo also rules!'
-				}
-			]
-		};
-		res.statusCode = 200;
-		res.setHeader('Content-type', 'application/json');
-		res.write(JSON.stringify(article));
+	app.get('/markdown_parse', function(req, res) {
+		var markdown = require('markdown');
+		res.setHeader('Content-type', 'text/html;charset=utf-8');
+		res.write(markdown.parse(req.query.data));
 		res.end();
-	});
-	app.get('/test2', function (req, res) {
-		res.render('test/index', {}, function(err,html) {
-			if (!err) {
-				res.send(html);
-				res.end();
-			} else {
-				console.log(err);
-			}
-		});
 	});
 }
 

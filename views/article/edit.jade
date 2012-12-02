@@ -1,8 +1,11 @@
 extends ../layout
 
+append scripts
+	script(src='/js/edit_article.js')
+
 block content
 	h2 Edit Article
-	form(method='post', action='/save')
+	form(method='post', action='/article/save')
 		input(name='_method', value='PUT', type='hidden')
 		-if (article)
 			-if (article.id > 0)
@@ -18,7 +21,7 @@ block content
 				input(name='article[seo_title]', value=article.seo_title, type='text', maxlength=50)
 			div
 				label Content
-				textarea(name='article[content]', cols=50, rows=15)
+				textarea(name='article[content]', id='article_content', style='width: 100%; min-height: 300px;')
 					=article.content || ''
 			div
 				label
@@ -35,7 +38,10 @@ block content
 				input(name='article[seo_title]', type='text', maxlength=50)
 			div
 				label Content
-				textarea(name='article[content]', cols=50, rows=15)
+				textarea(name='article[content]', id='article_content', cols=50, rows=15)
 			div
 				label
 				input(name='submit', value='Save', type='submit')
+block right
+	h2 Preview
+	div#preview

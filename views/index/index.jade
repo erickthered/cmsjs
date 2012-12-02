@@ -2,13 +2,18 @@ extends ../layout
 
 block content
 	h1 Welcome to the index page of CmsJS
-	each item in articles
-		li
-			a(href='/article/'+item.seo_title, title=item.title)= item.title
-			&nbsp;
-			a(href='/edit/'+item.seo_title, title=item.title) Edit
-			&nbsp;
-			a(href='/remove/'+item.seo_title, title=item.title) Delete
+	-if(articles.length > 0)
+		each item in articles
+			li
+				a(href='/article/view/'+item.seo_title, title=item.title)= item.title
+				&nbsp;
+				a(href='/article/edit/'+item.seo_title, title='edit', class='edit_link') Edit
+				&nbsp;
+				a(href='/article/remove/'+item.seo_title, title='delete', class='delete_link') Delete
+		script
+			$('a.delete_link').click(function(){
+				return confirm('Really?, delete this item?');
+			});
 	div
 		p
-			a(href='/edit') New Article
+			a(href='/article/edit') New Article
