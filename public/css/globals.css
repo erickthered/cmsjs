@@ -3,18 +3,28 @@ body {
 	font-family: arial,helvetica,verdad;
 	font-size: 13px;
 }
-h1 {
+.article_title {
 	font-weight: bold;
 	font-size: 18px;
 	margin-bottom: 5px;
 }
-
 .article_content {
 	padding: 20px;
 	border-left: 1px solid #ddd;
 }
 .article_author {
 	font-style: italic;
+	font-size: 11px;
+}
+
+.comment {
+	border: 1px dotted #edd;
+	margin: 5px;
+}
+.comment_author {
+	font-weight: bold;
+}
+.comment_content {
 	font-size: 11px;
 }
 

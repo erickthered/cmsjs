@@ -6,7 +6,9 @@ block content
 		li
 			a(href='/article/'+item.seo_title, title=item.title)= item.title
 			&nbsp;
-			a(href='/edit/'+item.seo_title, title=item.title) Editar
+			a(href='/edit/'+item.seo_title, title=item.title) Edit
+			&nbsp;
+			a(href='/remove/'+item.seo_title, title=item.title) Delete
 	div
 		p
 			a(href='/edit') New Article

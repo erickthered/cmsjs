@@ -18,7 +18,7 @@ block content
 				input(name='article[seo_title]', value=article.seo_title, type='text', maxlength=50)
 			div
 				label Content
-				textarea(name='article[content]', cols=50, rows=5)
+				textarea(name='article[content]', cols=50, rows=15)
 					=article.content || ''
 			div
 				label
@@ -35,7 +35,7 @@ block content
 				input(name='article[seo_title]', type='text', maxlength=50)
 			div
 				label Content
-				textarea(name='article[content]', cols=50, rows=5)
+				textarea(name='article[content]', cols=50, rows=15)
 			div
 				label
 				input(name='submit', value='Save', type='submit')
