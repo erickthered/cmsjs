@@ -1,3 +1,6 @@
+append scripts
+	script(src='/js/comment_edit.js')
+
 form(id='comment_form',action='/article/comment/save',method='post')
 	h3 Add a Comment
 	label Your Name (required)
@@ -9,17 +12,3 @@ form(id='comment_form',action='/article/comment/save',method='post')
 	input(type='hidden',name='comment[article]',value=article._id)
 	label
 	input(type='button',value='Publish Comment',id='comment_submit')
-	script
-		$(document).ready(function() {
-			$('#comment_submit').click(function() {
-				var isValid = $('#comment_author').val() != '';
-				isValid = isValid && $('#comment_email').val() != '';
-				isValid = isValid && $('#comment_content').val() != '';
-
-				if (isValid) {
-					$('#comment_form').submit();
-				} else {
-					alert('All fields are required');
-				}
-			});
-		});

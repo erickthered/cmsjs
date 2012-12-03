@@ -2,17 +2,17 @@
 
 ## Version 0.1
 
-* Add the ip address of the visitor leaving the comment.
-* Add the ip address of the article writing an article.
-* jQuery: validate the format of the email address of the user that adds a comment.
+* (done) Add the ip address of the visitor leaving the comment.
+* (done) Add the ip address of the article writing an article.
+* (done) Add comments counter.
+* (done) Delete article comments when deleting an article.
+* (done) jQuery: validate the format of the email address of the user that adds a comment.
+* Update article's comments counter when saving a comment.
 * Remove admin options (edit, delete, add article) from main page.
 * Articles paginator on main page.
-* Unpublished articles.
-* Delete article comments when deleting an article.
+* Unpublish articles.
 * Use custom auth function with *express*
 * Look for a nice WYSIWYG Markdown editor, if not found leave textarea as is and place instructions.
-* Add comments counter.
-* Update article's comments counter when saving a comment.
 * Create a JSON response to get comments for an article.
 * Create a JSON response when saving a comment.
 * Update only #comments div when posting a comment to an article.
