@@ -8,8 +8,8 @@ block content
 	form(method='post', action='/article/save')
 		input(name='_method', value='PUT', type='hidden')
 		-if (article)
-			-if (article.id > 0)
-				input(name='article[id]', value=article.id, type='hidden')
+			-if (article._id)
+				input(name='article[_id]', value=article._id, type='hidden')
 			div
 				label Author
 				input(name='article[author]', value=article.author, type='text', maxlength=200")

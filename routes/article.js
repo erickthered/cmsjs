@@ -56,7 +56,13 @@ var init = function(app) {
 	app.post('/article/save', requiresAuth, function(req, res) {
 		article.save(db, req, function(err, record) {
 			if (!err) {
-				res.redirect('/article/view/' + req.body.article.seo_title);
+				var articleid = 0;
+				if (record == 1) {
+					articleid = req.body.article._id;
+				} else {
+					articleid = record[0]._id;
+				}
+				res.redirect('/article/view/' + articleid);
 			} else {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
@@ -67,8 +73,9 @@ var init = function(app) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/article/remove/:name', requiresAuth, function(req, res) {
-		article.remove(db, req.params.name, function(err, result) {
+	app.get('/article/remove/:articleid', requiresAuth, function(req, res) {
+		// @todo Delete comments
+		article.remove(db, req.params.articleid, function(err, result) {
 			if (!err) {
 				res.write('<h1>Article Deleted</h1>');
 			} else {

@@ -6,7 +6,7 @@ var init = function(app) {
 
 	var db = app.get('db');
 	app.get('/', function(req, res) {
-		article.fetchRecent(db, 3, function(err, articles) {
+		article.fetchRecent(db, 10, function(err, articles) {
 			if (!err) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');

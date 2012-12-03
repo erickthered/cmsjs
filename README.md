@@ -2,7 +2,7 @@
 
 As it's name suggests, it is a CMS written in Node.js.  Node was chosen because of it's high performance and it's low memory consumption.
 
-## Contributors
+**Contributors**
 
 * [Erick Rojas](http://www.github.com/erickthered/)
 
@@ -37,6 +37,12 @@ If you are in a hurry, or if you don't mind knowing what you do :), just issue t
     npm install
     node app.js
 
+Then you just point your browser to:
+
+    http://servername:7777/
+
+Assuming you don't have any special requirements for your mongo db (different por, username or password), you should see the main page of **cmsjs**.
+
 ## Git Checkout
 
 ## Installing required modules
@@ -46,6 +52,8 @@ If you are in a hurry, or if you don't mind knowing what you do :), just issue t
 ## Run cmsjs
 
 ## Heroku deployment (Optional)
+
+# Configuration
 
 # Roadmap
 

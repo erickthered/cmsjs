@@ -19,7 +19,7 @@ block content
 					By #{comment.author}, on #{comment.postedOn}
 					&nbsp;
 					a(href='/article/comment/delete/' + comment._id) Delete
-					div E-mail: 
+					div.comment_author E-mail: 
 						a(href='mailto:'+comment.email)= comment.email
 					div.comment_content= comment.content
 

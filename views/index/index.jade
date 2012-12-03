@@ -5,11 +5,11 @@ block content
 	-if(articles.length > 0)
 		each item in articles
 			li
-				a(href='/article/view/'+item.seo_title, title=item.title)= item.title
+				a(href='/article/view/'+item._id, title=item.title)= item.title
 				&nbsp;
-				a(href='/article/edit/'+item.seo_title, title='edit', class='edit_link') Edit
+				a(href='/article/edit/'+item._id, title='edit', class='edit_link') Edit
 				&nbsp;
-				a(href='/article/remove/'+item.seo_title, title='delete', class='delete_link') Delete
+				a(href='/article/remove/'+item._id, title='delete', class='delete_link') Delete
 		script
 			$('a.delete_link').click(function(){
 				return confirm('Really?, delete this item?');
