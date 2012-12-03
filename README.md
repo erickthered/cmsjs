@@ -64,6 +64,6 @@ Assuming you don't have any special requirements for your mongo db (different po
 * **Ver. 0.5** - Improved security, user and role management, Configuration Panel.
 * **Ver. 0.6** - Sitemap and basic SEO (keywords and description)
 * **Ver. 0.7** - Themes
-* **Ver. 0.8** - Integrated stats.
+* **Ver. 0.8** - Integrated stats (most visited URL, most active author, most active commenter)
 * **Ver. 0.9** - Basic workflow support.
 * **Ver. 1.0** - Content versioning.
