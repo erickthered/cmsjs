@@ -8,7 +8,7 @@ As it's name suggests, it is a CMS written in Node.js.  Node was chosen because 
 
 # Current Status
 
-Current version is mong0.0.0, it's currently a proof of concept of the system architecture.
+Current version is 0.0.x, it's currently a proof of concept of the system architecture.
 
 Although it provides means to retrieve, insert, update and delete articles, it doesn't have any sort of security mechanism.
 
@@ -61,7 +61,7 @@ Assuming you don't have any special requirements for your mongo db (different po
 * **Ver. 0.2** - Support for *static* pages and file uploads (resources).
 * **Ver. 0.3** - Article categories and RSS feeds.  Navigation menus.
 * **Ver. 0.4** - Facebook and Twitter Integration: Likes and autotweet based on RSS feed.
-* **Ver. 0.5** - User and role management.  Configuration Panel.
+* **Ver. 0.5** - Improved security, user and role management, Configuration Panel.
 * **Ver. 0.6** - Sitemap and basic SEO (keywords and description)
 * **Ver. 0.7** - Themes
 * **Ver. 0.8** - Integrated stats.

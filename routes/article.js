@@ -9,8 +9,8 @@ var init = function(app) {
 	console.log('Initializing ARTICLE routes...');
 
 	var db = app.get('db');
-	app.get('/article/view/:name', function(req, res) {
-		article.get(db, req.params.name, function(err, record) {
+	app.get('/article/view/:id', function(req, res) {
+		article.get(db, req.params.id, function(err, record) {
 			if (record) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
@@ -34,8 +34,8 @@ var init = function(app) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/article/edit/:name?', requiresAuth, function(req, res) {
-		article.get(db, req.params.name, function(err, record) {
+	app.get('/article/edit/:id?', requiresAuth, function(req, res) {
+		article.get(db, req.params.id, function(err, record) {
 			if (!err) {
 				res.render('article/edit', {article:record}, function (err, html) {
 					if (err) {
