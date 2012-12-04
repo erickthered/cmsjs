@@ -7,10 +7,11 @@
 * (done) Add comments counter.
 * (done) Delete article comments when deleting an article.
 * (done) jQuery: validate the format of the email address of the user that adds a comment.
-* Update article's comments counter when saving a comment.
+* (done) Update article's comments counter when saving a comment.
+* (done) Unpublish articles.
+* (done) Republish articles.
 * Remove admin options (edit, delete, add article) from main page.
 * Articles paginator on main page.
-* Unpublish articles.
 * Use custom auth function with *express*
 * Look for a nice WYSIWYG Markdown editor, if not found leave textarea as is and place instructions.
 * Create a JSON response to get comments for an article.

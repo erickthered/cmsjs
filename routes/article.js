@@ -108,6 +108,21 @@ var init = function(app) {
 			}
 		});
 	});
+	app.get('/articles/unpublished', requiresAuth, function(req, res) {
+		article.fetchUnpublished(db, 10, function(err, records) {
+			res.render('article/unpublished', {articles:records}, function(err, html) {
+				if (err) {
+					console.log(err);
+					res.end();
+				} else {
+					res.statusCode = 200;
+					res.setHeader('Content-type', 'text/html;charset=utf-8');
+					res.write(html);
+					res.end();
+				}			
+			});
+		});
+	});
 }
 
 exports.init = init;

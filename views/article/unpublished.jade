@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+	h1 Unpublished Articles
+	-if(articles.length > 0)
+		each item in articles
+			li
+				a(href='/article/view/'+item._id, title=item.title)= item.title
+				&nbsp;
+				a(href='/article/edit/'+item._id, title='edit', class='edit_link') Edit
+				&nbsp;
+				a(href='/article/remove/'+item._id, title='delete', class='delete_link') Delete
+		script
+			$('a.delete_link').click(function(){
+				return confirm('Really?, delete this item?');
+			});
+	div
+		p
+			a(href='/article/edit') New Article

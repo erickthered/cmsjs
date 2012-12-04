@@ -20,6 +20,15 @@ block content
 				label SEO Title
 				input(name='article[seo_title]', value=article.seo_title, type='text', maxlength=50)
 			div
+				label Publish
+				select(name='article[published]', id='article_publish')
+					-if (article.published==1)
+						option(value=0) No
+						option(value=1, selected='selected') Yes
+					-else
+						option(value=0, selected='selected') No
+						option(value=1) Yes
+			div
 				label Content
 				textarea(name='article[content]', id='article_content', style='width: 100%; min-height: 300px;')
 					=article.content || ''
@@ -36,6 +45,11 @@ block content
 			div
 				label SEO Title
 				input(name='article[seo_title]', type='text', maxlength=50)
+			div
+				label Publish
+				select(name='article[published]', id='article_publish')
+					option(value=0) No
+					option(value=1) Yes
 			div
 				label Content
 				textarea(name='article[content]', id='article_content', cols=50, rows=15)
