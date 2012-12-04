@@ -5,10 +5,11 @@ As it's name suggests, it is a CMS written in Node.js.  Node was chosen because 
 **Contributors**
 
 * [Erick Rojas](http://www.github.com/erickthered/)
+* [Joseph Myers](http://www.myersdaily.org/joseph/) CmsJS uses his md5() function
 
 # Current Status
 
-Current version is 0.0.x, it's currently a proof of concept of the system architecture.
+Current version is 0.0.x, it's currently a proof of concept of the system's architecture.
 
 Although it provides means to retrieve, insert, update and delete articles, it doesn't have any sort of security mechanism.
 
@@ -16,6 +17,9 @@ Although it provides means to retrieve, insert, update and delete articles, it d
 
 * [node.js](http://www.nodejs.org) 0.8.x+ and npm 1.1.x+
 * [MongoDB](http://www.mongodb.org) 2.0.x+
+* [Git](http://git-scm.com/) 1.7.5+
+
+These are the oldest versions which CmsJS has been tested on (and works!).  Probably some older versions should work, but, it's always recommended that you have the latest stable versions available.
 
 The following nodejs modules will be installed:
 
@@ -25,6 +29,8 @@ The following nodejs modules will be installed:
 * mongodb
 * mongoose
 * nodeunit
+
+So far, mongoose has not been use, but at some point there's a good chance that it will be easier to specify the models using this module.
 
 # Installation
 
@@ -41,11 +47,25 @@ Then you just point your browser to:
 
     http://servername:7777/
 
-Assuming you don't have any special requirements for your mongo db (different por, username or password), you should see the main page of **cmsjs**.
+Assuming you don't have any special requirements for your mongo database (port no 27017, username and password), you should see the main page of **cmsjs**.
 
-## Git Checkout
+## Get the source code from GitHub
+
+The first thing you should do, is open your command line.  Then go to the folder where you want CmsJS to reside. (e.g. /var/www/), keep in mind that a new folder `cmsjs` will be created when you clone the repository.
+
+Then just type the following command:
+
+    git clone git://github.com/erickthered/cmsjs.git 
+
+After it's finnished, there should be a new folder/directory named `cmsjs`. (e.g. /var/www/cmsjs).  Now, just change the current directory:
+
+    cd cmsjs
 
 ## Installing required modules
+
+package.json
+
+    npm install
 
 ## Running Tests (Optional)
 

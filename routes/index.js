@@ -6,11 +6,13 @@ var init = function(app) {
 
 	var db = app.get('db');
 	app.get('/', function(req, res) {
-		article.fetchRecent(db, 10, function(err, articles) {
+//		console.log(req.session);
+		var authorization = req.headers.authorization;
+		article.fetchRecent(db, null, function(err, articles) {
 			if (!err) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
-				res.render('index/index', {articles: articles}, function(err, html) {
+				res.render('index/index', {articles: articles, user: req.user}, function(err, html) {
 					if (!err) {
 						res.write(html);
 						res.end();
@@ -27,6 +29,29 @@ var init = function(app) {
 			}
 		});
 		visitor.save(db, req);
+	});
+	app.get('/page/:pagenum', function(req, res) {
+		var currentPage = {
+			page : eval(req.params.pagenum)
+		}
+		var authorization = req.headers.authorization;
+		article.fetchRecent(db, currentPage, function(err, articles) {
+			if (!err) {
+				res.statudCode = 200;
+				res.setHeader('Content-type', 'text/html;charset=utf-8');
+				res.render('index/index', {articles:articles, user: req.user}, function(err, html) {
+					if (!err) {
+						res.write(html);
+						res.end();
+					} else {
+						console.log("Error en page/" + req.params.pagenum + " : " + err);
+						res.end();
+					}
+				});
+			} else {
+
+			}
+		});
 	});
 	app.get('/markdown_parse', function(req, res) {
 		var markdown = require('markdown');

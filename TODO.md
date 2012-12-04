@@ -10,9 +10,9 @@
 * (done) Update article's comments counter when saving a comment.
 * (done) Unpublish articles.
 * (done) Republish articles.
-* Remove admin options (edit, delete, add article) from main page.
-* Articles paginator on main page.
+* (done) Articles paginator on main page.
 * Use custom auth function with *express*
+* Remove admin options (edit, delete, add article) from main page.
 * Look for a nice WYSIWYG Markdown editor, if not found leave textarea as is and place instructions.
 * Create a JSON response to get comments for an article.
 * Create a JSON response when saving a comment.
@@ -20,7 +20,7 @@
 
 ## Version 0.2
 
-* Validate seo_title (nothing but 0-9,a-z,A-Z,[-,_]
+* Validate seo_title (nothing but 0-9,a-z,A-Z,[-,_])
 * Try to find seo_title when everything else fails.
 * Enable/disable comments for articles.
 

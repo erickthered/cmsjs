@@ -1,19 +1,36 @@
 extends ../layout
 
 block content
-	h1 Welcome to the index page of CmsJS
+	h1 Welcome to CmsJS
+
 	-if(articles.length > 0)
 		each item in articles
 			li
 				a(href='/article/view/'+item._id, title=item.title)= item.title
-				&nbsp;
-				a(href='/article/edit/'+item._id, title='edit', class='edit_link') Edit
-				&nbsp;
-				a(href='/article/remove/'+item._id, title='delete', class='delete_link') Delete
+				-if (user)
+					&nbsp;
+					a(href='/article/edit/'+item._id, title='edit', class='edit_link') Edit
+					&nbsp;
+					a(href='/article/remove/'+item._id, title='delete', class='delete_link') Delete
 		script
 			$('a.delete_link').click(function(){
 				return confirm('Really?, delete this item?');
 			});
-	div
-		p
-			a(href='/article/edit') New Article
+
+	div#paginator
+		-if (articles.paginator.hasPrevious)
+			a(href='/page/' + (articles.paginator.page - 1)) Prev
+		-else
+			span Prev
+
+		span &nbsp;- Page #{articles.paginator.page} -&nbsp;
+		
+		-if (articles.paginator.hasNext)
+			a(href='/page/' + (articles.paginator.page + 1)) Next
+		-else
+			span Next
+
+	-if (user)
+		div
+			p
+				a(href='/article/edit') New Article

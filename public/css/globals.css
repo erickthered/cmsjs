@@ -42,6 +42,10 @@ body {
 	font-size: 11px;
 }
 
+#paginator {
+	margin-top: 20px;
+}
+
 form label {
 	display: block;
 }

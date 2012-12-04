@@ -35,6 +35,7 @@ var init = function(app) {
 		visitor.save(db, req);
 	});
 	app.get('/article/edit/:id?', requiresAuth, function(req, res) {
+//		console.log(req.session);
 		article.get(db, req.params.id, function(err, record) {
 			if (!err) {
 				res.render('article/edit', {article:record}, function (err, html) {
