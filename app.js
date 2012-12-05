@@ -17,6 +17,7 @@ var initExpressApp = function(db) {
 	app.set('db', db);
 	initControllers();
 	app.listen(appPort);
+	console.log('CmsJS running on port ' + appPort);
 };
 
 function initControllers() {
