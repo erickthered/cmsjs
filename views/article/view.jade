@@ -11,15 +11,16 @@ block content
 	div.article_author By: 
 		= article.author
 	div.article_content!= article.content
-	-if (article.comments.length > 0)
-		div#comments
-			h2 Comments
+	h2 Comments
+	div#comments
+		-if (article.comments.length > 0)
 			-each comment in article.comments
 				div.comment
-					By #{comment.author}, on #{comment.postedOn}
-					&nbsp;
-					a(href='/article/comment/delete/' + comment._id) Delete
-					div.comment_author E-mail: 
+					div.comment_author
+						p By #{comment.author}, on #{comment.postedOn}
+						&nbsp;
+						a(href='/article/comment/delete/' + comment._id) Delete
+					div.comment_email E-mail: 
 						a(href='mailto:'+comment.email)= comment.email
 					div.comment_content= comment.content
 

@@ -88,11 +88,16 @@ var init = function(app) {
 	app.post('/article/comment/save', function(req, res) {
 		comment.save(db, req, function(err, result) {
 			if (!err) {
-				res.write('comment added');
+				res.statusCode = 200;
+				res.setHeader('Content-type', 'application/json');
+				res.write(JSON.stringify({result: 'success', data: result}));
 				res.end();
 			} else {
 				console.log(err);
-				res.write('error when saving comment');
+
+				res.statusCode = 200;
+				res.setHeader('Content-type', 'application/json');
+				res.write(JSON.stringify({result: 'error', data: null}));
 				res.end();
 			}
 		});

@@ -7,6 +7,9 @@ function notImplemented(req, res) {
 var init = function(app) {
 	console.log('Initializing USER routes...');	
 
+	app.get('/user/login', notImplemented);
+	app.get('/user/signup', notImplemented);
+	app.get('/user/profile', notImplemented);
 	app.get('/user/manage', notImplemented);
 	app.get('/user/edit', notImplemented);
 	app.get('/user/delete', notImplemented);

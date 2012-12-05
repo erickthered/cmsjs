@@ -5,7 +5,6 @@ As it's name suggests, it is a CMS written in Node.js.  Node was chosen because 
 **Contributors**
 
 * [Erick Rojas](http://www.github.com/erickthered/)
-* [Joseph Myers](http://www.myersdaily.org/joseph/) CmsJS uses his md5() function
 
 # Current Status
 
@@ -25,6 +24,7 @@ The following nodejs modules will be installed:
 
 * express
 * jade
+* jshashes
 * markdown
 * mongodb
 * mongoose

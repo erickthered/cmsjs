@@ -1,15 +1,16 @@
 {
 	"name" : "CmsJS",
-	"version" : "0.0.6",
+	"version" : "0.0.7",
 	"description" :
 		"A Content Management System (CMS) written in Node.js that uses MongoDB as its backend",
 	"author" : "Erick Rojas",
 	"dependencies" : {
 		"express" : "*",
+		"jade" : "*",
+		"jshashes" : "*",
+		"markdown": "*",
 		"mongodb" : "*",
 		"mongoose" : "*",
-		"jade" : "*",
-		"markdown": "*",
 		"nodeunit": "*"
 	},
 	"engines": {

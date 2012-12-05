@@ -11,26 +11,33 @@
 * (done) Unpublish articles.
 * (done) Republish articles.
 * (done) Articles paginator on main page.
+* (done) Remove admin options (edit, delete, add article) from main page.
 * Use custom auth function with *express*
-* Remove admin options (edit, delete, add article) from main page.
 * Look for a nice WYSIWYG Markdown editor, if not found leave textarea as is and place instructions.
 * Create a JSON response to get comments for an article.
-* Create a JSON response when saving a comment.
-* Update only #comments div when posting a comment to an article.
+* (done) Create a JSON response when saving a comment.
+* (done) Update only #comments div when posting a comment to an article and clear the form.
+* Update #comments section when deleting a comment.
+* Remove admin options (delete comment) from article view.
 
 ## Version 0.2
 
+* Display admin options in main page when user is logged in.
+* Display admin options in article view when user is logged in.
 * Validate seo_title (nothing but 0-9,a-z,A-Z,[-,_])
 * Try to find seo_title when everything else fails.
 * Enable/disable comments for articles.
+* Link to main page
 
 ## Version 0.3
 
-* Link to main page
 * Link to articles archive (year/month)
 * Link to articles by category
 * Look for a nice RSS feed generator in npmsearch.
 * Add categories (add, edit, remove)
+* Contact Form.
+* Store contact form in database
+* Send email with contact form
 
 ## Version 0.4
 

@@ -9,6 +9,6 @@ form(id='comment_form',action='/article/comment/save',method='post')
 	input(name='comment[email]',id='comment_email')
 	label Your Comment (required)
 	textarea(name='comment[content]',id='comment_content',rows='15',cols='50')
-	input(type='hidden',name='comment[article]',value=article._id)
+	input(type='hidden',name='comment[article]',value=article._id, id='comment_article')
 	label
 	input(type='button',value='Publish Comment',id='comment_submit')
