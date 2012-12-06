@@ -1,11 +1,11 @@
 var article = require('../lib/models/article');
 var visitor = require('../lib/models/visitor');
 var express = require('express');
-var requiresAuth = express.basicAuth('admin', 'admin');
 
 var init = function(app) {
 	console.log ("Initializing INDEX routes...");
 
+	//var requiresAuth = app.get('auth_provider');
 	var db = app.get('db');
 	app.get('/', function(req, res) {
 		article.fetchRecent(db, null, function(err, articles) {
@@ -54,7 +54,8 @@ var init = function(app) {
 			}
 		});
 	});
-	app.get('/markdown_parse', function(req, res) {
+	app.get('/markdown_parse', /*requiresAuth,*/ function(req, res) {
+		console.log('doing markdown_parse');
 		var markdown = require('markdown');
 		res.setHeader('Content-type', 'text/html;charset=utf-8');
 		res.write(markdown.parse(req.query.data));

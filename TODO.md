@@ -18,7 +18,7 @@
 * (done) Create a JSON response when saving a comment.
 * (done) Update only #comments div when posting a comment to an article and clear the form.
 * (done) Update #comments section when deleting a comment.
-* Remove admin options (delete comment) from article view.
+* (done) Remove admin options (delete comment) from article view.
 
 ## Version 0.2
 
@@ -28,6 +28,7 @@
 * Try to find seo_title when everything else fails.
 * Enable/disable comments for articles.
 * Link to main page
+* Don't use MemoryStore for sessions
 
 ## Version 0.3
 

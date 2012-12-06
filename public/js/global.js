@@ -6,8 +6,9 @@ function addCommentDiv(comment, hidden) {
 	commentAuthorElement = $('<div><p>By ' + comment.author + ', on ' + comment.postedOn + '<p></div>');
 	commentAuthorElement.addClass('comment_author');
 
-	commentOptionsElement = $('<div><a href="#" onClick="removeComment(\''+ comment._id + '\');return false;">Delete</a></div>');
-	commentOptionsElement.addClass('comment_options');
+	//@todo. display this div only if logged in as an admin user
+	// commentOptionsElement = $('<div><a href="#" onClick="removeComment(\''+ comment._id + '\');return false;">Delete</a></div>');
+	// commentOptionsElement.addClass('comment_options');
 
 	commentEmailElement = $('<div><strong>E-mail:</strong>' + comment.email + '</div>');
 	commentEmailElement.addClass('comment_email');
