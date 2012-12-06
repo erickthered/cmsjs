@@ -8,13 +8,8 @@ var init = function(app) {
 
 	var db = app.get('db');
 	app.get('/', function(req, res) {
-//		console.log(req.session);
 		article.fetchRecent(db, null, function(err, articles) {
 			var authorization = req.headers.authorization;
-			console.log('autorizacion: ');
-			console.log(authorization);
-			console.log('user');
-			console.log(req.user);
 			if (!err) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');

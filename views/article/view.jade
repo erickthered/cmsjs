@@ -2,7 +2,10 @@ extends ../layout
 
 append block head
 	title= article.title
-	
+
+append scripts
+	script(src='/js/article_view.js')
+
 block content
 	h1.article_title= article.title
 	- if(article.publishedOn)
@@ -12,17 +15,8 @@ block content
 		= article.author
 	div.article_content!= article.content
 	h2 Comments
+	input(type='hidden',id='article_id',value=article._id)
 	div#comments
-		-if (article.comments.length > 0)
-			-each comment in article.comments
-				div.comment
-					div.comment_author
-						p By #{comment.author}, on #{comment.postedOn}
-						&nbsp;
-						a(href='/article/comment/delete/' + comment._id) Delete
-					div.comment_email E-mail: 
-						a(href='mailto:'+comment.email)= comment.email
-					div.comment_content= comment.content
 
 block right
 	include ../comment/edit

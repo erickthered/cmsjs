@@ -97,7 +97,21 @@ var init = function(app) {
 
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'application/json');
-				res.write(JSON.stringify({result: 'error', data: null}));
+				res.write(JSON.stringify({result: 'error', data: err}));
+				res.end();
+			}
+		});
+	});
+	app.get('/article/:articleid/comments', function(req, res) {
+		comment.getByArticle(db, req.params.articleid, function(err, result) {
+			res.statusCode = 200;
+			res.setHeader('Content-type', 'application/json');
+			if (err) {
+				console.log(err);
+				res.write(JSON.stringify({result:'error', data: err}));
+				res.end();
+			} else {
+				res.write(JSON.stringify({result:'success', data: result}));
 				res.end();
 			}
 		});

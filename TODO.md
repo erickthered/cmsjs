@@ -14,10 +14,10 @@
 * (done) Remove admin options (edit, delete, add article) from main page.
 * Use custom auth function with *express*
 * Look for a nice WYSIWYG Markdown editor, if not found leave textarea as is and place instructions.
-* Create a JSON response to get comments for an article.
+* (done) Create a JSON response to get comments for an article.
 * (done) Create a JSON response when saving a comment.
 * (done) Update only #comments div when posting a comment to an article and clear the form.
-* Update #comments section when deleting a comment.
+* (done) Update #comments section when deleting a comment.
 * Remove admin options (delete comment) from article view.
 
 ## Version 0.2
