@@ -3,7 +3,6 @@ var visitor = require('../lib/models/visitor');
 var comment = require('../lib/models/comment');
 var markdown = require('markdown');
 var express = require('express');
-var requiresAuth = express.basicAuth('admin', 'admin');
 
 var init = function(app) {
 	console.log('Initializing ARTICLE routes...');
@@ -15,7 +14,7 @@ var init = function(app) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'text/html;charset=utf-8');
 				record.content = markdown.parse(record.content);
-				res.render('article/view', {article:record, md:markdown.parse}, function (err, html) {
+				res.render('article/view', {article:record, md:markdown.parse, user: req.session.user}, function (err, html) {
 					if (err) {
 						console.log(err);
 						res.end();
@@ -34,11 +33,10 @@ var init = function(app) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/article/edit/:id?', requiresAuth, function(req, res) {
-//		console.log(req.session);
+	app.get('/article/edit/:id?', function(req, res) {
 		article.get(db, req.params.id, function(err, record) {
 			if (!err) {
-				res.render('article/edit', {article:record}, function (err, html) {
+				res.render('article/edit', {article:record, user:req.session.user}, function (err, html) {
 					if (err) {
 						console.log(err);
 						res.end();
@@ -54,7 +52,7 @@ var init = function(app) {
 		});		
 		visitor.save(db, req);
 	});	
-	app.post('/article/save', requiresAuth, function(req, res) {
+	app.post('/article/save', function(req, res) {
 		article.save(db, req, function(err, record) {
 			if (!err) {
 				var articleid = 0;
@@ -74,13 +72,15 @@ var init = function(app) {
 		});
 		visitor.save(db, req);
 	});
-	app.get('/article/remove/:articleid', requiresAuth, function(req, res) {
-		// @todo Delete comments
+	app.get('/article/remove/:articleid', function(req, res) {
 		article.remove(db, req.params.articleid, function(err, result) {
 			if (!err) {
-				res.write('<h1>Article Deleted</h1>');
+				res.redirect("/");
+				res.end();
 			} else {
 				console.log(err);
+				res.redirect("/");
+				res.end();
 			}
 			res.end();
 		});
@@ -111,12 +111,12 @@ var init = function(app) {
 				res.write(JSON.stringify({result:'error', data: err}));
 				res.end();
 			} else {
-				res.write(JSON.stringify({result:'success', data: result}));
+				res.write(JSON.stringify({result:'success', data: result, isLoggedIn: req.session.isLoggedIn}));
 				res.end();
 			}
 		});
 	});
-	app.get('/article/comment/delete/:commentid', requiresAuth, function(req, res) {
+	app.get('/article/comment/delete/:commentid', function(req, res) {
 		comment.remove(db, req.params.commentid, function(err, result) {
 			if (!err) {
 				res.write('comment deleted');
@@ -128,20 +128,25 @@ var init = function(app) {
 			}
 		});
 	});
-	app.get('/articles/unpublished', requiresAuth, function(req, res) {
-		article.fetchUnpublished(db, 10, function(err, records) {
-			res.render('article/unpublished', {articles:records}, function(err, html) {
-				if (err) {
-					console.log(err);
-					res.end();
-				} else {
-					res.statusCode = 200;
-					res.setHeader('Content-type', 'text/html;charset=utf-8');
-					res.write(html);
-					res.end();
-				}			
+	app.get('/articles/unpublished', function(req, res) {
+		if (!req.session.user) {
+			res.redirect("/login");
+			res.end();
+		} else {
+			article.fetchUnpublished(db, 10, function(err, records) {
+				res.render('article/unpublished', {articles:records, user: req.session.user}, function(err, html) {
+					if (err) {
+						console.log(err);
+						res.end();
+					} else {
+						res.statusCode = 200;
+						res.setHeader('Content-type', 'text/html;charset=utf-8');
+						res.write(html);
+						res.end();
+					}			
+				});
 			});
-		});
+		}
 	});
 }
 

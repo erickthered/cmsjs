@@ -13,11 +13,10 @@ var mongoURI = process.env.MONGOLAB_URI || "mongodb://" + mongoHost + ":" + mong
 var appPort = process.env.PORT || 7777;
 
 var initExpressApp = function(db) {
-	console.log('Setting application DB');
 	app.set('db', db);
 	initControllers();
 	app.listen(appPort);
-	console.log('CmsJS running on port ' + appPort);
+	console.log('Starting CmsJS on port ' + appPort);
 };
 
 function initControllers() {

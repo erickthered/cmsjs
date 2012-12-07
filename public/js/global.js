@@ -1,14 +1,10 @@
-function addCommentDiv(comment, hidden) {
+function addCommentDiv(comment, hidden, isLoggedIn) {
 	commentElement = $('<div></div>');
 	commentElement.addClass('comment');
 	if (hidden) commentElement.addClass('hidden');
 
 	commentAuthorElement = $('<div><p>By ' + comment.author + ', on ' + comment.postedOn + '<p></div>');
 	commentAuthorElement.addClass('comment_author');
-
-	//@todo. display this div only if logged in as an admin user
-	// commentOptionsElement = $('<div><a href="#" onClick="removeComment(\''+ comment._id + '\');return false;">Delete</a></div>');
-	// commentOptionsElement.addClass('comment_options');
 
 	commentEmailElement = $('<div><strong>E-mail:</strong>' + comment.email + '</div>');
 	commentEmailElement.addClass('comment_email');
@@ -17,7 +13,11 @@ function addCommentDiv(comment, hidden) {
 	commentContentElement.addClass('comment_content');
 
 	commentElement.append(commentAuthorElement);
-	commentElement.append(commentOptionsElement);
+	if (isLoggedIn) {
+		commentOptionsElement = $('<div><a href="#" onClick="removeComment(\''+ comment._id + '\');return false;">Delete</a></div>');
+		commentOptionsElement.addClass('comment_options');
+		commentElement.append(commentOptionsElement);
+	}
 	commentElement.append(commentEmailElement);
 	commentElement.append(commentContentElement);
 
@@ -41,7 +41,7 @@ function populateComments(articleid) {
 			$('#comments').html('');
 			if (data.result == 'success') {
 				for (var i=0; i<data.data.length; i++) {
-					addCommentDiv(data.data[i]);
+					addCommentDiv(data.data[i], false, data.isLoggedIn);
 				}
 			}
 		});

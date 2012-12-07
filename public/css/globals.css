@@ -56,3 +56,7 @@ div#footer {
 .hidden {
 	display: none;
 }
+div#user_options p {
+	text-align: right;
+	background-color: #000;
+}

@@ -1,0 +1,15 @@
+div#user_options
+-if(typeof(user) != 'undefined' && user!=null)
+	p Hello&nbsp;
+		strong= user
+		&nbsp;
+		a(href='/') Home
+		&nbsp;
+		a(href='/articles/unpublished') Not Published
+		&nbsp;
+		a(href='/logout') Logout
+-else
+	p
+		a(href='/') Home
+		&nbsp;
+		a(href='/login') Login

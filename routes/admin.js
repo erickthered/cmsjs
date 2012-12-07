@@ -14,6 +14,7 @@ function notImplemented(req, res) {
 
 var init = function(app) {
 	console.log("Initializing ADMIN routes");
+	
 	app.get('/admin', requiresAuth, notImplemented);
 	app.get('/admin/configure', requiresAuth, notImplemented);
 }
