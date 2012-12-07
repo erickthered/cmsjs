@@ -12,7 +12,7 @@
 * (done) Republish articles.
 * (done) Articles paginator on main page.
 * (done) Remove admin options (edit, delete, add article) from main page.
-* Use custom auth function with *express*
+* (done) Use custom auth function with *express*
 * Look for a nice WYSIWYG Markdown editor, if not found leave textarea as is and place instructions.
 * (done) Create a JSON response to get comments for an article.
 * (done) Create a JSON response when saving a comment.

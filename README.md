@@ -30,7 +30,7 @@ The following nodejs modules will be installed:
 * mongoose
 * nodeunit
 
-So far, mongoose has not been use, but at some point there's a good chance that it will be easier to specify the models using this module.
+So far, mongoose has not been used, but at some point there's a good chance that it will be easier to specify the models using this module.
 
 # Installation
 
@@ -61,19 +61,54 @@ After it's finnished, there should be a new folder/directory named `cmsjs`. (e.g
 
     cd cmsjs
 
+ Now you're ready to install the module dependencies for this project.
+
 ## Installing required modules
 
-package.json
+Like any other Node.js project, the `package.json` defines the required modules.  To install the libraries, just type
 
     npm install
 
+After a while, all libraries should have been installed.  Check for a folder called `node_modules` and there you should be able to see one directory for every module that has been installed.
+
 ## Running Tests (Optional)
 
+
+
 ## Run cmsjs
+
+To run CmsJS, you should have `mongod` running in your machine.  Once you've checked that status of mongoDB, you can start the application with the following command:
+
+    node app.js
+
+It should display the following messages:
+
+    Starting CmsJS on port 7777
+    Initialing Core...
+    Initializing ADMIN routes
+    Initializing ARTICLE routes...
+    Initializing INDEX routes...
+    Initializing MENU routes...
+    Initializing USER routes...
+
+This tells you that the application started successfully and informs you about the port it is using.  Now you can point your browser to:
+
+    http://localhost:7777/
+
+And you should see CmsJS start page.
 
 ## Heroku deployment (Optional)
 
 # Configuration
+
+In order to be able to add content to the site, you have to craete a `users` collection in you database, and insert and object with the username and the SHA512 encrypted password that you desire.
+
+For example if you wanted to use `foo` as the *username*, and `foobar` as the *password*, you would do something like this:
+
+    mongo
+    > db.users.insert({ username: 'foo', password: '' });
+
+Now you can point your browser to: `http://localhost:7777/login` and use the username and password that you inserted to add some content to the site.
 
 # Roadmap
 
