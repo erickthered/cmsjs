@@ -101,7 +101,7 @@ var init = function(app) {
 			if (!err) {
 				res.statusCode = 200;
 				res.setHeader('Content-type', 'application/json');
-				res.write(JSON.stringify({result: 'success', data: result}));
+				res.write(JSON.stringify({result: 'success', data: result, isLoggedIn:req.session.isLoggedIn}));
 				res.end();
 			} else {
 				console.log(err);

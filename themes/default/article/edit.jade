@@ -34,7 +34,7 @@ block content
 					=article.content || ''
 			div
 				label
-				input(name='submit', value='Save', type='submit')
+				input.btn.btn-info(name='submit', value='Save', type='submit')
 		-else
 			div
 				label Author
@@ -55,7 +55,7 @@ block content
 				textarea(name='article[content]', id='article_content', cols=50, rows=15)
 			div
 				label
-				input(name='submit', value='Save', type='submit')
+				input.btn.btn-info(name='submit', value='Save', type='submit')
 block right
 	h2 Preview
 	div#preview

@@ -1,9 +1,15 @@
 block head
-	title CmsJS
+	block headTitle
+		title CmsJS
 	meta(name='description', content='CmsJS generated page')
 	meta(name='generator', content='CmsJS')
+
 	block css
+		link(href='/css/bootstrap.min.css', rel='stylesheet')
+		link(href='/css/bootstrap-responsive.min.css', rel='stylesheet')
 		link(href='/css/globals.css',rel='stylesheet')
+
 	block scripts
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
+		script(src='/js/bootstrap.min.js')
 		script(src='/js/global.js')

@@ -1,0 +1,26 @@
+extends ../layout
+
+append block head
+	title= article.title
+
+append scripts
+	script(src='/js/article_view.js')
+
+block mainTitle
+	h1= article.title
+
+block headTitle
+	title= article.title
+
+block content
+	p
+		address By #{article.author}
+			br
+			span On: #{article.publishedOn}
+	div.article_content!= article.content
+	include ../comment/edit
+
+block right
+	h3 Comments
+	input(type='hidden',id='article_id',value=article._id)
+	div#comments

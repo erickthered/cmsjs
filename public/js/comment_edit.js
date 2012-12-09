@@ -23,12 +23,12 @@ $(document).ready(function() {
 						}
 					}, function(data) {
 						if (data.result == 'success') {
-							addCommentDiv(data.data[0], true);
+							alert('You comment has been posted!');
+							addCommentDiv(data.data[0], false, data.isLoggedIn);
 							$('#comment_author').val('');
 							$('#comment_email').val('');
 							$('#comment_content').val('');
-							alert('You comment has been posted!');
-							$('#comments .hidden').show('slow');
+							$('#comments .hidden').show();
 						} else {
 							alert("There's been an error posting your comment");
 						}

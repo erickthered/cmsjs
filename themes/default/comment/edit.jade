@@ -1,0 +1,21 @@
+append scripts
+	script(src='/js/comment_edit.js')
+
+h3 Add a Comment
+form.form-horizontal(id='comment_form',action='/article/comment/save',method='post')
+	div.control-group
+		label.control-label Your Name (required)
+		div.controls
+			input(name='comment[author]',id='comment_author',placeholder='Your name')
+	div.control-group
+		label.control-label Your Email (required)
+		div.controls
+			input(name='comment[email]',id='comment_email',placeholder='Your email')
+	div.control-group
+		label.control-label Your Comment (required)
+		div.controls
+			textarea(name='comment[content]',id='comment_content',rows='5', style='width:100%')
+	div.control-group
+		div.controls
+			input(type='hidden',name='comment[article]',value=article._id, id='comment_article')
+			input.btn.btn-info(type='button',value='Publish Comment',id='comment_submit')

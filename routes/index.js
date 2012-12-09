@@ -52,7 +52,6 @@ var init = function(app) {
 		});
 	});
 	app.get('/markdown_parse', function(req, res) {
-		console.log('doing markdown_parse');
 		var markdown = require('markdown');
 		res.setHeader('Content-type', 'text/html;charset=utf-8');
 		res.write(markdown.parse(req.query.data));

@@ -106,7 +106,7 @@ In order to be able to add content to the site, you have to craete a `users` col
 For example if you wanted to use `foo` as the *username*, and `foobar` as the *password*, you would do something like this:
 
     mongo
-    > db.users.insert({ username: 'foo', password: '' });
+    > db.users.insert({ username: 'foo', password: '0a50261ebd1a390fed2bf326f2673c145582a6342d523204973d0219337f81616a8069b012587cf5635f6925f1b56c360230c19b273500ee013e030601bf2425' });
 
 Now you can point your browser to: `http://localhost:7777/login` and use the username and password that you inserted to add some content to the site.
 

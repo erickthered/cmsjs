@@ -1,25 +1,33 @@
 function addCommentDiv(comment, hidden, isLoggedIn) {
 	commentElement = $('<div></div>');
-	commentElement.addClass('comment');
+	commentElement.addClass('hero');
 	if (hidden) commentElement.addClass('hidden');
 
-	commentAuthorElement = $('<div><p>By ' + comment.author + ', on ' + comment.postedOn + '<p></div>');
-	commentAuthorElement.addClass('comment_author');
+	commentRowElement = $('<div></div>');
+	commentRowElement.addClass('row-fluid');
 
-	commentEmailElement = $('<div><strong>E-mail:</strong>' + comment.email + '</div>');
-	commentEmailElement.addClass('comment_email');
+	commentGravatarElement = $('<div></div>');
+	commentGravatarElement.addClass('span2');
+	commentGravatarElement.html('<img src="http://www.gravatar.com/avatar/' + comment.gravatar + '"/>');
+	commentRowElement.append(commentGravatarElement);
 
-	commentContentElement = $('<div>' + comment.content + '</div>');
-	commentContentElement.addClass('comment_content');
+	commentContentElement = $('<div></div>');
+	commentContentElement.addClass('span10');
+	commentContentElement.html('<small>' + comment.author + '</small><br/><small>' + comment.postedOn + '</small><p>' + comment.content + '</p>');
+	commentRowElement.append(commentContentElement);
 
-	commentElement.append(commentAuthorElement);
+	// commentEmailElement = $('<div><strong>E-mail:</strong>' + comment.email + '</div>');
+	// commentEmailElement.addClass('comment_email');
+
+	commentElement.append(commentRowElement);
+	// commentElement.append(commentAuthorElement);
 	if (isLoggedIn) {
 		commentOptionsElement = $('<div><a href="#" onClick="removeComment(\''+ comment._id + '\');return false;">Delete</a></div>');
 		commentOptionsElement.addClass('comment_options');
 		commentElement.append(commentOptionsElement);
 	}
-	commentElement.append(commentEmailElement);
-	commentElement.append(commentContentElement);
+	//commentElement.append(commentEmailElement);
+	//commentElement.append(commentContentElement);
 
 	$('#comments').prepend(commentElement);
 }

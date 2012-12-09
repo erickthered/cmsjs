@@ -2,6 +2,8 @@ var express = require('express');
 var user = require('./lib/models/user');
 var MemoryStore = require('express').session.MemoryStore;
 
+var theme = process.env.THEME || 'default'
+
 var init = function(app) {
 	console.log('Initialing Core...');
 	app.enable('trust proxy');
@@ -9,7 +11,10 @@ var init = function(app) {
 	app.use(express.cookieParser());
 	app.use(express.session({secret: "crazy secret stuff" }));
 	app.use(express.bodyParser());
+
+	app.set('theme', theme);
 	app.set('view engine', 'jade');
+	app.set('views', './themes/' + app.get('theme'));
 
 	user.setDb(app.get('db'));
 	app.all('*', function(req, res, next) {

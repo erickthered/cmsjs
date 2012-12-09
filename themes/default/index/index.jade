@@ -1,8 +1,9 @@
 extends ../layout
 
-block content
+block mainTitle
 	h1 Welcome to CmsJS
 
+block content
 	-if(articles.length > 0)
 		each item in articles
 			li

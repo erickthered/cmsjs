@@ -1,0 +1,19 @@
+div.navbar.navbar-inverse.navbar-fixed-top
+	div.navbar-inner
+		div.container
+			a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+				span.icon-bar
+				span.icon-bar
+			a.brand(href="/") CmsJS
+			div.nav-collapse.collapse
+				ul.nav
+					li
+						a(href='/') Home
+					-if(typeof(user) != 'undefined' && user!=null)
+						li
+							a(href='/articles/unpublished') Not Published
+						li
+							a(href='/logout') Logout
+					-else
+						li
+							a(href='/login') Login
