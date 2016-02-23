@@ -53,10 +53,10 @@ var init = function(app) {
 				} else {
 					console.log(err);
 				}
-			});		
+			});
 			visitor.save(db, req);
 		}
-	});	
+	});
 	app.post('/article/save', function(req, res) {
 		if (!req.session.user) {
 			res.redirect("/");
@@ -154,7 +154,7 @@ var init = function(app) {
 						res.setHeader('Content-type', 'text/html;charset=utf-8');
 						res.write(html);
 						res.end();
-					}			
+					}
 				});
 			});
 		}

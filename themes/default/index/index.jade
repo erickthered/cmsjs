@@ -9,14 +9,14 @@ block content
 			li
 				a(href='/article/view/'+item._id, title=item.title)= item.title
 				-if (user)
-					&nbsp;
+					| &nbsp;
 					a(href='/article/edit/'+item._id, title='edit', class='edit_link') Edit
-					&nbsp;
+					| &nbsp;
 					a(href='/article/remove/'+item._id, title='delete', class='delete_link') Delete
 		script
-			$('a.delete_link').click(function(){
-				return confirm('Really?, delete this item?');
-			});
+			| $('a.delete_link').click(function(){
+			| 	return confirm('Really?, delete this item?');
+			| });
 
 	div#paginator
 		-if (articles.paginator.hasPrevious)
@@ -25,7 +25,7 @@ block content
 			span Prev
 
 		span &nbsp;- Page #{articles.paginator.page} -&nbsp;
-		
+
 		-if (articles.paginator.hasNext)
 			a(href='/page/' + (articles.paginator.page + 1)) Next
 		-else

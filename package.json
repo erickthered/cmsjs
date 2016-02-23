@@ -5,7 +5,7 @@
 		"A Content Management System (CMS) written in Node.js. CmsJS uses MongoDB to store content",
 	"author" : "Erick Rojas",
 	"dependencies" : {
-		"express" : "*",
+		"express" : "3.*",
 		"jade" : "*",
 		"jshashes" : "*",
 		"markdown": "*",
