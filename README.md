@@ -1,3 +1,5 @@
+*Last Update: 2016-02-25*
+
 # What is it?
 
 As it's name suggests, it is a CMS written in Node.js.  Node was chosen because of it's high performance and it's low memory consumption.
@@ -22,7 +24,7 @@ These are the oldest versions which CmsJS has been tested on (and works!).  Prob
 
 The following nodejs modules will be installed:
 
-* express
+* express 3
 * jade
 * jshashes
 * markdown
