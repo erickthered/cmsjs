@@ -2,7 +2,7 @@
 
 # What is it?
 
-As it's name suggests, it is a CMS written in Node.js.  Node was chosen because of it's high performance and it's low memory consumption.
+As its name suggests, it is a CMS written in Node.js.  Node was chosen because of its high performance and its low memory consumption.
 
 **Contributors**
 
