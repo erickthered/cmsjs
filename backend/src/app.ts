@@ -7,12 +7,17 @@ import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 import articleRoutes from './routes/articleRoutes';
 import settingsRoutes from './routes/settingsRoutes';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger';
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json()); // Enable JSON body parser
+
+// Swagger UI setup
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
