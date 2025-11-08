@@ -5,6 +5,7 @@ import connectDB from './database';
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
+import articleRoutes from './routes/articleRoutes';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json()); // Enable JSON body parser
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/articles', articleRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
