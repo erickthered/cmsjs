@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 import articleRoutes from './routes/articleRoutes';
+import settingsRoutes from './routes/settingsRoutes';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/articles', articleRoutes);
+app.use('/api/settings', settingsRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
