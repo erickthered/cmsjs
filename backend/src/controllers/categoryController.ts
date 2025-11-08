@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
 import Category from '../models/Category';
 
 // Helper function to generate a slug from a name
