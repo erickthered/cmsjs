@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import config from './config';
 import connectDB from './database';
 import authRoutes from './routes/authRoutes';
+import userRoutes from './routes/userRoutes';
+import categoryRoutes from './routes/categoryRoutes';
 
 dotenv.config();
 
@@ -11,6 +13,8 @@ const app = express();
 app.use(express.json()); // Enable JSON body parser
 
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/categories', categoryRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
