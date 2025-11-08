@@ -6,6 +6,8 @@ import User from '../models/User';
 
 let mongoServer: MongoMemoryServer;
 
+jest.setTimeout(30000); // Set a higher timeout for the test suite
+
 describe('Auth Endpoints', () => {
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();

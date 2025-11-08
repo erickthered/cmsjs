@@ -30,7 +30,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 
     const token = jwt.sign({ id: user._id, group: user.group }, config.jwtSecret, { expiresIn: '1h' });
 
-    res.status(201).json({ token });
+    res.status(201).json({ token, user });
   } catch (error) {
     next(error);
   }
