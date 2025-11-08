@@ -6,23 +6,29 @@ import authRoutes from './routes/authRoutes';
 
 dotenv.config();
 
-connectDB();
-
 const app = express();
 
 app.use(express.json()); // Enable JSON body parser
 
 app.use('/api/auth', authRoutes);
 
-const port = config.port;
-
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+const startServer = async () => {
+  await connectDB();
+  const port = config.port;
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+  });
+};
+
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+}
+
+export default app;
 
 
 
