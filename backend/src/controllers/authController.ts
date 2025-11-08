@@ -32,7 +32,6 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 
     res.status(201).json({ token });
   } catch (error) {
-    console.error('Error during user registration:', error);
     next(error);
   }
 };
