@@ -81,16 +81,16 @@ This document outlines the development plan for creating a new, modern CMS from 
 1.  **Project Setup:**
     *   Create a new directory for the frontend project.
     *   Initialize a new project using Vite: `npm create vite@latest frontend -- --template react-ts`.
-    *   Install core dependencies: `react-router-dom`, `axios`, `tailwindcss`.
+    *   Install core dependencies: `react-router-dom`, `axios`, `bootstrap`, `react-bootstrap`.
     *   Install development dependencies: `vitest`, `@testing-library/react`.
 
 2.  **Project Structure:**
     *   Organize the project into logical folders: `pages`, `components`, `services`, `contexts`, `hooks`, `themes`.
 
 3.  **Styling and Theming:**
-    *   Configure Tailwind CSS for responsive design.
+    *   Import Bootstrap CSS into the main application file.
     *   Create the directory structure for themes: `src/themes/default`.
-    *   Plan a strategy for dynamically loading theme styles.
+    *   Plan a strategy for dynamically loading theme styles and overriding Bootstrap variables.
 
 4.  **API Integration:**
     *   Create a dedicated service layer (e.g., `services/api.js`) using `axios` to handle all communication with the backend.
