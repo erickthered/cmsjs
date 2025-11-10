@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import DashboardPage from './pages/DashboardPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
+import DashboardLayout from './components/DashboardLayout';
 
 function App() {
   return (
@@ -13,7 +14,10 @@ function App() {
 
       {/* Private Routes */}
       <Route element={<PrivateRoute />}>
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          {/* Other dashboard routes will go here */}
+        </Route>
       </Route>
     </Routes>
   );
