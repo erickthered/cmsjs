@@ -4,6 +4,9 @@ import DashboardPage from './pages/DashboardPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import DashboardLayout from './components/DashboardLayout';
+import CategoryPage from './pages/CategoryPage';
+import ArticlePage from './pages/ArticlePage';
+import UserPage from './pages/UserPage';
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
       <Route element={<PrivateRoute />}>
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard/categories" element={<CategoryPage />} />
+          <Route path="/dashboard/articles" element={<ArticlePage />} />
+          <Route path="/dashboard/users" element={<UserPage />} />
           {/* Other dashboard routes will go here */}
         </Route>
       </Route>

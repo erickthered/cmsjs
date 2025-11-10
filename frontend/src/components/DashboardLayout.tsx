@@ -21,6 +21,9 @@ const DashboardLayout: React.FC = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+              <Nav.Link href="/dashboard/categories">Categories</Nav.Link>
+              <Nav.Link href="/dashboard/articles">Articles</Nav.Link>
+              {user?.group === 'admin' && <Nav.Link href="/dashboard/users">Users</Nav.Link>}
               {/* Add more navigation links here later */}
             </Nav>
             <Nav>
