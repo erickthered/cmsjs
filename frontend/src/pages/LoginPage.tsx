@@ -30,25 +30,24 @@ const LoginPage: React.FC = () => {
             <h2 className="text-center mb-4">Log In</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
-              <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Form.Group id="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Button className="w-100 mt-3" type="submit">
+                          <Form.Group controlId="emailInput">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                              type="email"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              required
+                            />
+                          </Form.Group>
+                          <Form.Group controlId="passwordInput">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                              type="password"
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              required
+                            />
+                          </Form.Group>              <Button className="w-100 mt-3" type="submit">
                 Log In
               </Button>
             </Form>
