@@ -8,13 +8,21 @@ import CategoryPage from './pages/CategoryPage';
 import ArticlePage from './pages/ArticlePage';
 import UserPage from './pages/UserPage';
 import SettingsPage from './pages/SettingsPage';
+import PublicLayout from './components/PublicLayout';
+import ArticleDetailPage from './pages/ArticleDetailPage';
+import CategoryArticlesPage from './pages/CategoryArticlesPage';
 
 function App() {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<HomePage />} />
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/article/:slug" element={<ArticleDetailPage />} />
+        <Route path="/category/:categorySlug" element={<CategoryArticlesPage />} />
+      </Route>
       <Route path="/login" element={<LoginPage />} />
+
 
       {/* Private Routes */}
       <Route element={<PrivateRoute />}>
