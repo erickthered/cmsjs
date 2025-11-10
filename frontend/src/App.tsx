@@ -7,6 +7,7 @@ import DashboardLayout from './components/DashboardLayout';
 import CategoryPage from './pages/CategoryPage';
 import ArticlePage from './pages/ArticlePage';
 import UserPage from './pages/UserPage';
+import SettingsPage from './pages/SettingsPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/dashboard/categories" element={<CategoryPage />} />
           <Route path="/dashboard/articles" element={<ArticlePage />} />
           <Route path="/dashboard/users" element={<UserPage />} />
+          <Route path="/dashboard/settings" element={<SettingsPage />} />
           {/* Other dashboard routes will go here */}
         </Route>
       </Route>

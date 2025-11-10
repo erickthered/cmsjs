@@ -24,6 +24,7 @@ const DashboardLayout: React.FC = () => {
               <Nav.Link href="/dashboard/categories">Categories</Nav.Link>
               <Nav.Link href="/dashboard/articles">Articles</Nav.Link>
               {user?.group === 'admin' && <Nav.Link href="/dashboard/users">Users</Nav.Link>}
+              {user?.group === 'admin' && <Nav.Link href="/dashboard/settings">Settings</Nav.Link>}
               {/* Add more navigation links here later */}
             </Nav>
             <Nav>
